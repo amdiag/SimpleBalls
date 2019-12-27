@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+//using System.Windows.Media;
 
 namespace SimpleBalls
 {
@@ -33,4 +35,46 @@ namespace SimpleBalls
             g.FillEllipse(b, r);
         }
     }
+
+    class SimplePointBall
+    {
+        private int _x, _y, _r = 10;
+       
+        public SimplePointBall(Form f,int x, int y) {
+            Graphics g = f.CreateGraphics();
+            Brush b = Brushes.Green;
+            _x = x-_r;
+            _y = y-_r;
+            Rectangle r = new Rectangle(_x, _y, 2*_r, 2*_r);
+            g.FillEllipse(b, r);
+        }
+    }
+    
+    class SimplePointRandomColorBall
+    {
+        private static Random _rnd = new Random();
+        private int _x, _y, _r = 10; 
+        private Brush _brush;
+       
+        public SimplePointRandomColorBall(Form f, int x, int y) {
+            Graphics g = f.CreateGraphics();
+            
+            _brush = getRandomBrush();
+            _x = x - _r;
+            _y = y - _r;
+            Rectangle r = new Rectangle(_x, _y, 2 * _r, 2 * _r);
+            g.FillEllipse(_brush, r);
+        }
+
+
+        public static Brush getRandomBrush()
+        {
+            Type brushesType = typeof(Brushes);
+
+            PropertyInfo[] properties = brushesType.GetProperties();
+
+            return (Brush)properties[_rnd.Next(properties.Length)].GetValue(null, null);
+        }
+    }
+
 }

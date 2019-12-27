@@ -36,5 +36,11 @@ namespace SimpleBalls
         {
             SimpleRandomBall randomBall = new SimpleRandomBall(this);
         }
+
+        private void FormDemoClassSimpleBall_MouseClick(object sender, MouseEventArgs e)
+        {
+            //SimplePointBall pointBall = new SimplePointBall(this, e.X, e.Y);
+            SimplePointRandomColorBall randomColorPointBall = new SimplePointRandomColorBall(this, e.X, e.Y);
+        }
     }
 }

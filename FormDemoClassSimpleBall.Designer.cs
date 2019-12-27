@@ -64,6 +64,7 @@ namespace SimpleBalls
             this.Controls.Add(this.buttonDrawCircle);
             this.Name = "FormDemoClassSimpleBall";
             this.Text = "Demo Simple Balls";
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.FormDemoClassSimpleBall_MouseClick);
             this.ResumeLayout(false);
 
         }
