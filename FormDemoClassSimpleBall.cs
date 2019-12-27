@@ -29,18 +29,22 @@ namespace SimpleBalls
         private void buttonDrawCircle_Click(object sender, EventArgs e)
         {
             SimpleBall ball = new SimpleBall(this);
+            ball.Show();
            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             SimpleRandomBall randomBall = new SimpleRandomBall(this);
+            randomBall.Show();
         }
 
         private void FormDemoClassSimpleBall_MouseClick(object sender, MouseEventArgs e)
         {
             //SimplePointBall pointBall = new SimplePointBall(this, e.X, e.Y);
+            //pointBall.Show();
             SimplePointRandomColorBall randomColorPointBall = new SimplePointRandomColorBall(this, e.X, e.Y);
+            randomColorPointBall.Show();
         }
     }
 }

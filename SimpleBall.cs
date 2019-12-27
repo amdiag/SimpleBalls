@@ -12,67 +12,60 @@ namespace SimpleBalls
 {
     class SimpleBall
     {
+        protected int _x = 100;
+        protected int _y = 100;
+        protected int _size = 15;
+        protected Form _f;
+        protected Brush _brush;
+        protected Rectangle _r;
+
         public SimpleBall(Form f)
         {
-            Graphics g = f.CreateGraphics();
-            Brush b = Brushes.Red;
-            Rectangle r = new Rectangle(400, 400, 15, 15);
-            g.FillEllipse(b, r);
+            _f = f;
+            _brush = Brushes.Red;
+            
         }
-    }
-
-    class SimpleRandomBall
-    {
-        private int x, y;
-        private Random rnd = new Random();
-        public SimpleRandomBall(Form f)
+        public void Show()
         {
-            Graphics g = f.CreateGraphics();
-            Brush b = Brushes.Green;
-            x = rnd.Next(0, 700);
-            y = rnd.Next(0, 350);
-            Rectangle r = new Rectangle(x, y, 20, 20);
-            g.FillEllipse(b, r);
+            Graphics g = _f.CreateGraphics();
+            _r = new Rectangle(_x, _y, _size, _size);
+            g.FillEllipse(_brush, _r);
         }
     }
 
-    class SimplePointBall
+    class SimpleRandomBall:SimpleBall
     {
-        private int _x, _y, _r = 10;
-       
-        public SimplePointBall(Form f,int x, int y) {
-            Graphics g = f.CreateGraphics();
-            Brush b = Brushes.Green;
-            _x = x-_r;
-            _y = y-_r;
-            Rectangle r = new Rectangle(_x, _y, 2*_r, 2*_r);
-            g.FillEllipse(b, r);
+        protected Random _rnd = new Random();
+        public SimpleRandomBall(Form f):base(f)
+        {
+            _x = _rnd.Next(0, f.ClientSize.Width);
+            _y = _rnd.Next(0, f.ClientSize.Height);
+        }
+    }
+
+    class SimplePointBall:SimpleBall
+    {
+        //public SimplePointBall(Form f) : base(f) { }
+
+        public SimplePointBall(Form f,int x, int y):base(f) {
+            _x = x- _size;
+            _y = y- _size;
         }
     }
     
-    class SimplePointRandomColorBall
+    class SimplePointRandomColorBall:SimplePointBall
     {
         private static Random _rnd = new Random();
-        private int _x, _y, _r = 10; 
-        private Brush _brush;
        
-        public SimplePointRandomColorBall(Form f, int x, int y) {
+        public SimplePointRandomColorBall(Form f, int x, int y):base(f,x,y) {
             Graphics g = f.CreateGraphics();
-            
             _brush = getRandomBrush();
-            _x = x - _r;
-            _y = y - _r;
-            Rectangle r = new Rectangle(_x, _y, 2 * _r, 2 * _r);
-            g.FillEllipse(_brush, r);
         }
-
 
         public static Brush getRandomBrush()
         {
             Type brushesType = typeof(Brushes);
-
             PropertyInfo[] properties = brushesType.GetProperties();
-
             return (Brush)properties[_rnd.Next(properties.Length)].GetValue(null, null);
         }
     }
