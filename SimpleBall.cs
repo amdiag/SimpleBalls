@@ -18,4 +18,19 @@ namespace SimpleBalls
             g.FillEllipse(b, r);
         }
     }
+
+    class SimpleRandomBall
+    {
+        private int x, y;
+        private Random rnd = new Random();
+        public SimpleRandomBall(Form f)
+        {
+            Graphics g = f.CreateGraphics();
+            Brush b = Brushes.Green;
+            x = rnd.Next(0, 700);
+            y = rnd.Next(0, 350);
+            Rectangle r = new Rectangle(x, y, 20, 20);
+            g.FillEllipse(b, r);
+        }
+    }
 }

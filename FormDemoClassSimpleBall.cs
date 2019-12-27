@@ -29,6 +29,12 @@ namespace SimpleBalls
         private void buttonDrawCircle_Click(object sender, EventArgs e)
         {
             SimpleBall ball = new SimpleBall(this);
+           
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SimpleRandomBall randomBall = new SimpleRandomBall(this);
         }
     }
 }
