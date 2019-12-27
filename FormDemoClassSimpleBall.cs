@@ -12,6 +12,9 @@ namespace SimpleBalls
 {
     public partial class FormDemoClassSimpleBall : Form
     {
+
+        SimpleBall ball;
+        SimpleRandomBall randomBall;
         public FormDemoClassSimpleBall()
         {
             InitializeComponent();
@@ -28,14 +31,14 @@ namespace SimpleBalls
 
         private void buttonDrawCircle_Click(object sender, EventArgs e)
         {
-            SimpleBall ball = new SimpleBall(this);
+            ball = new SimpleBall(this);
             ball.Show();
            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SimpleRandomBall randomBall = new SimpleRandomBall(this);
+            randomBall = new SimpleRandomBall(this);
             randomBall.Show();
         }
 
@@ -43,8 +46,21 @@ namespace SimpleBalls
         {
             //SimplePointBall pointBall = new SimplePointBall(this, e.X, e.Y);
             //pointBall.Show();
-            SimplePointRandomColorBall randomColorPointBall = new SimplePointRandomColorBall(this, e.X, e.Y);
+            //SimplePointRandomColorBall randomColorPointBall = new SimplePointRandomColorBall(this, e.X, e.Y);
+            SimplePointColorBall randomColorPointBall = new SimplePointColorBall(this, e.X, e.Y, Brushes.Aquamarine);
             randomColorPointBall.Show();
+        }
+
+        private void MoveCircle_Click(object sender, EventArgs e)
+        {
+            ball.Go();
+            ball.Show();
+        }
+
+        private void MoveRandomBall_Click(object sender, EventArgs e)
+        {
+            randomBall.Go();
+            randomBall.Show();
         }
     }
 }

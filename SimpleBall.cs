@@ -31,6 +31,12 @@ namespace SimpleBalls
             _r = new Rectangle(_x, _y, _size, _size);
             g.FillEllipse(_brush, _r);
         }
+
+        public void Go()
+        {
+            _x += 10;
+            _y += 10;
+        }
     }
 
     class SimpleRandomBall:SimpleBall
@@ -50,6 +56,14 @@ namespace SimpleBalls
         public SimplePointBall(Form f,int x, int y):base(f) {
             _x = x- _size;
             _y = y- _size;
+        }
+    }
+
+    class SimplePointColorBall : SimplePointBall
+    {
+        public SimplePointColorBall(Form f, int x, int y, Brush brush) : base(f, x, y)
+        {
+            _brush = brush;
         }
     }
     
