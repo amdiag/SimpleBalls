@@ -18,12 +18,15 @@ namespace SimpleBalls
         protected Form _f;
         protected Brush _brush;
         protected Rectangle _r;
+        protected int _vx, _vy;
+        static Random _rnd = new Random();
 
         public SimpleBall(Form f)
         {
             _f = f;
             _brush = Brushes.Red;
-            
+            _vx = _rnd.Next(-20,20);
+            _vy = _rnd.Next(-20, 20);
         }
         public void Show()
         {
@@ -34,8 +37,21 @@ namespace SimpleBalls
 
         public void Go()
         {
-            _x += 10;
-            _y += 10;
+            _x += _vx;
+            _y += _vy;
+        }
+        public void Erase()
+        {
+            Graphics g = _f.CreateGraphics();
+            _r = new Rectangle(_x, _y, _size, _size);
+            g.FillEllipse(new SolidBrush(_f.BackColor), _r);
+        }
+
+        public void Move()
+        {
+            Erase();
+            Go();
+            Show();
         }
     }
 

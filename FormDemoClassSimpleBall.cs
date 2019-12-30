@@ -53,14 +53,12 @@ namespace SimpleBalls
 
         private void MoveCircle_Click(object sender, EventArgs e)
         {
-            ball.Go();
-            ball.Show();
+            ball.Move();
         }
 
         private void MoveRandomBall_Click(object sender, EventArgs e)
         {
-            randomBall.Go();
-            randomBall.Show();
+            randomBall.Move();
         }
     }
 }
