@@ -100,4 +100,34 @@ namespace SimpleBalls
         }
     }
 
+    class SimpleMoveBall : SimpleRandomBall
+    {
+        Timer _timerBall;
+        
+        public SimpleMoveBall(Form f) : base(f)
+        {
+            _timerBall = new Timer();
+            _timerBall.Enabled = true;
+            _timerBall.Interval = 100;
+            _timerBall.Tick += TimerBall_Tick;
+        }
+
+        private void TimerBall_Tick(object sender, EventArgs e)
+        {
+            Move();
+        }
+
+        internal void Stop()
+        {
+            _timerBall.Enabled = false;
+        }
+
+        internal void Start()
+        {
+            _timerBall.Enabled = true;
+        }
+
+        internal bool GetTimerStatus() { return _timerBall.Enabled; }
+    }
+
 }

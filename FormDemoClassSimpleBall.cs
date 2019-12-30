@@ -14,7 +14,8 @@ namespace SimpleBalls
     {
 
         SimpleBall ball;
-        SimpleRandomBall randomBall;
+        //SimpleRandomBall randomBall;
+        SimpleMoveBall randomBall;
         public FormDemoClassSimpleBall()
         {
             InitializeComponent();
@@ -32,13 +33,15 @@ namespace SimpleBalls
         private void buttonDrawCircle_Click(object sender, EventArgs e)
         {
             ball = new SimpleBall(this);
+            //ball = new SimpleMoveBall(this);
             ball.Show();
            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            randomBall = new SimpleRandomBall(this);
+            //randomBall = new SimpleRandomBall(this);
+            randomBall = new SimpleMoveBall(this);
             randomBall.Show();
         }
 
@@ -53,12 +56,28 @@ namespace SimpleBalls
 
         private void MoveCircle_Click(object sender, EventArgs e)
         {
-            ball.Move();
+            //ball.Move();
+            timerBall.Enabled = true;
+            timerBall.Interval = 100;
         }
 
         private void MoveRandomBall_Click(object sender, EventArgs e)
         {
-            randomBall.Move();
+            //randomBall.Move();
+            //randomBall.Stop();
+            if (randomBall.GetTimerStatus() == true) {
+                randomBall.Stop();
+                moveRandomCircle.Text = "Start";
+            }
+            else { 
+                randomBall.Start();
+                moveRandomCircle.Text = "Stop";
+            }
+        }
+
+        private void timerBall_Tick(object sender, EventArgs e)
+        {
+            ball.Move();
         }
     }
 }

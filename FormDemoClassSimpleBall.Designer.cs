@@ -31,10 +31,12 @@ namespace SimpleBalls
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.buttonDrawCircle = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.MoveCircle = new System.Windows.Forms.Button();
             this.moveRandomCircle = new System.Windows.Forms.Button();
+            this.timerBall = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // buttonDrawCircle
@@ -71,11 +73,15 @@ namespace SimpleBalls
             // 
             this.moveRandomCircle.Location = new System.Drawing.Point(136, 193);
             this.moveRandomCircle.Name = "moveRandomCircle";
-            this.moveRandomCircle.Size = new System.Drawing.Size(75, 23);
+            this.moveRandomCircle.Size = new System.Drawing.Size(105, 23);
             this.moveRandomCircle.TabIndex = 3;
-            this.moveRandomCircle.Text = "Move Random Circle";
+            this.moveRandomCircle.Text = "Stop Random Circle";
             this.moveRandomCircle.UseVisualStyleBackColor = true;
             this.moveRandomCircle.Click += new System.EventHandler(this.MoveRandomBall_Click);
+            // 
+            // timerBall
+            // 
+            this.timerBall.Tick += new System.EventHandler(this.timerBall_Tick);
             // 
             // FormDemoClassSimpleBall
             // 
@@ -99,6 +105,7 @@ namespace SimpleBalls
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button MoveCircle;
         private System.Windows.Forms.Button moveRandomCircle;
+        private System.Windows.Forms.Timer timerBall;
     }
 }
 
