@@ -57,7 +57,7 @@ namespace SimpleBalls
 
     public class SimpleRandomBall:SimpleBall
     {
-        protected Random _rnd = new Random();
+        protected static Random _rnd = new Random();
         public SimpleRandomBall(Form f):base(f)
         {
             _x = _rnd.Next(0, f.ClientSize.Width);
@@ -128,6 +128,14 @@ namespace SimpleBalls
         }
 
         internal bool GetTimerStatus() { return _timerBall.Enabled; }
+        public bool OnScreen()
+        {
+            if (_x > 0 && _x < _f.ClientSize.Width && _y < _f.ClientSize.Height)
+            {
+                return true;
+            }
+            else return false;
+        }
     }
 
 }
