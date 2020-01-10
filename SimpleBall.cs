@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace SimpleBalls
 {
-    class SimpleBall
+    public class SimpleBall
     {
         protected int _x = 100;
         protected int _y = 100;
@@ -55,7 +55,7 @@ namespace SimpleBalls
         }
     }
 
-    class SimpleRandomBall:SimpleBall
+    public class SimpleRandomBall:SimpleBall
     {
         protected Random _rnd = new Random();
         public SimpleRandomBall(Form f):base(f)
@@ -65,7 +65,7 @@ namespace SimpleBalls
         }
     }
 
-    class SimplePointBall:SimpleBall
+    public class SimplePointBall:SimpleBall
     {
         //public SimplePointBall(Form f) : base(f) { }
 
@@ -75,7 +75,7 @@ namespace SimpleBalls
         }
     }
 
-    class SimplePointColorBall : SimplePointBall
+    public class SimplePointColorBall : SimplePointBall
     {
         public SimplePointColorBall(Form f, int x, int y, Brush brush) : base(f, x, y)
         {
@@ -83,7 +83,7 @@ namespace SimpleBalls
         }
     }
     
-    class SimplePointRandomColorBall:SimplePointBall
+    public class SimplePointRandomColorBall:SimplePointBall
     {
         private static Random _rnd = new Random();
        
@@ -100,7 +100,7 @@ namespace SimpleBalls
         }
     }
 
-    class SimpleMoveBall : SimpleRandomBall
+    public class SimpleMoveBall : SimpleRandomBall
     {
         Timer _timerBall;
         
